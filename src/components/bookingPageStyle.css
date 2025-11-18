@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.booking-container {
+  width: 100%;
+  max-width: 320px;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #fff5f7;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hamburger-menu {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger-menu span {
+  width: 100%;
+  height: 3px;
+  background-color: #ffb6c1;
+  border-radius: 2px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.booking-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.booking-title {
+  color: #e93d6f;
+  font-size: 48px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.section-divider {
+  position: relative;
+  text-align: center;
+  margin: 30px 0 20px;
+  border: none;
+  border-top: 1px solid #5c3e7e;
+}
+
+.section-divider-text {
+  position: relative;
+  background-color: #fff5f7;
+  padding: 0 15px;
+  color: #5c3e7e;
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: -12px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  color: #e93d6f;
+  font-family: "Work Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.input-label.purple {
+  color: #5c3e7e;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #5c3e7e;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-color: #e93d6f;
+}
+
+.input-field.pink-border {
+  border-color: #e93d6f;
+  color: #e93d6f;
+}
+
+.number-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.number-input {
+  flex: 0 0 80px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.number-suffix {
+  color: #5c3e7e;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.number-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e93d6f;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.number-btn:hover:not(:disabled) {
+  background-color: #c92a5a;
+}
+
+.number-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.shoe-size-item {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.shoe-size-input-group {
+  flex: 1;
+}
+
+.remove-person-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e93d6f;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.3s;
+}
+
+.remove-person-btn:hover {
+  background-color: #c92a5a;
+}
+
+.add-person-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e93d6f;
+  border: none;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  transition: background-color 0.3s;
+}
+
+.add-person-btn:hover {
+  background-color: #c92a5a;
+}
+
+.strike-button {
+  width: 100%;
+  padding: 20px;
+  background-color: #e93d6f;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.strike-button:hover {
+  background-color: #c92a5a;
+}
+
+.strike-button:active {
+  transform: scale(0.98);
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.menu-content {
+  background-color: white;
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-content button {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #5c3e7e;
+  cursor: pointer;
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.menu-content nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-content nav a {
+  color: #5c3e7e;
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-content nav a:hover {
+  color: #e93d6f;
+}
+
+/* Ta bort spinner från number inputs */
+/* input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+} */
