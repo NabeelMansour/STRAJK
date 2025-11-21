@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./bookingPageStyle.css";
 import logo from "/assets/logo.svg";
+import { sendBookingInfo } from "../services/apiPage";
 
 function BookingPage() {
   const navigate = useNavigate();
@@ -11,8 +12,9 @@ function BookingPage() {
   const [numberOfLanes, setNumberOfLanes] = useState(1);
   const [shoeSizes, setShoeSizes] = useState<string[]>([""]);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // När antal spelare ändras, uppdatera skostorlekar
   const handlePlayersChange = (newCount: number) => {
     setNumberOfPlayers(newCount);
     const newShoeSizes = [];
@@ -22,23 +24,58 @@ function BookingPage() {
     setShoeSizes(newShoeSizes);
   };
 
-  // Uppdatera en skostorlek
   const handleShoeSizeChange = (index: number, value: string) => {
     const newShoes = [...shoeSizes];
     newShoes[index] = value;
     setShoeSizes(newShoes);
   };
 
-  // Strike-knapp (bara UI, gör inget ännu)
-  const handleStrike = () => {
-    setTimeout(() => {
-      navigate("/confirmation");
-    }, 1000);
-    console.log({ date, time, numberOfPlayers, numberOfLanes, shoeSizes });
+  const handleStrike = async () => {
+    if (!date || !time) {
+      setError("Please choose time and date");
+      return;
+    }
+
+    const shoesAsNumbers = shoeSizes
+      .map((size) => parseInt(size))
+      .filter((size) => !isNaN(size));
+
+    if (shoesAsNumbers.length !== numberOfPlayers) {
+      setError("Fill all the shoe sizes!");
+      return;
+    }
+
+    const timeAndDate = `${date}T${time}`;
+
+    interface bookingType {
+      when: string;
+      lanes: number;
+      people: number;
+      shoes: number[];
+    }
+    const bookingData: bookingType = {
+      when: timeAndDate,
+      lanes: numberOfLanes,
+      people: numberOfPlayers,
+      shoes: shoesAsNumbers,
+    };
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const result = await sendBookingInfo(bookingData);
+      console.log("booking result", result);
+      navigate("/confirmation", { state: result.bookingDetails });
+    } catch (err) {
+      setError("Booking failed, please try again!");
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <section className="booking-container">
-      {/* Header */}
       <header className="booking-header">
         <button
           className="hamburger-menu"
@@ -55,10 +92,9 @@ function BookingPage() {
         <div style={{ width: "24px" }}></div>
       </header>
 
-      {/* Menu */}
       {menuOpen && (
         <div className="menu-overlay" onClick={() => setMenuOpen(false)}>
-          <div className="menu-content" onClick={(e) => e.stopPropagation()}>
+          <div className="menu-content">
             <button onClick={() => setMenuOpen(false)}>×</button>
             <nav>
               <a href="/booking">Bokning</a>
@@ -68,7 +104,14 @@ function BookingPage() {
         </div>
       )}
 
-      <div className="form-section">
+      {error && (
+        <div className="error-message">
+          {error}
+          <button onClick={() => setError("")}>×</button>
+        </div>
+      )}
+
+      <section className="form-section">
         <hr className="section-divider" />
         <div className="section-divider-text">WHEN, WHAT & WHO</div>
 
@@ -127,10 +170,9 @@ function BookingPage() {
           </div>
         </div>
 
-        {/* Antal banor */}
-        <div className="input-group">
+        <section className="input-group">
           <label className="input-label purple">NUMBER OF LANES</label>
-          <div className="number-input-wrapper">
+          <article className="number-input-wrapper">
             <button
               type="button"
               className="number-btn"
@@ -156,11 +198,10 @@ function BookingPage() {
             >
               +
             </button>
-          </div>
-        </div>
-      </div>
+          </article>
+        </section>
+      </section>
 
-      {/* Skostorlekar - visas när spelare väljs */}
       {numberOfPlayers > 0 && (
         <div className="form-section">
           <hr className="section-divider" />
@@ -202,9 +243,12 @@ function BookingPage() {
         </div>
       )}
 
-      {/* Strike-knapp */}
-      <button className="strike-button" onClick={handleStrike}>
-        STRIIIIIIKE!
+      <button
+        className="strike-button"
+        onClick={handleStrike}
+        disabled={loading}
+      >
+        {loading ? "BOKER..." : "STRIIIIIIKE!"}
       </button>
     </section>
   );

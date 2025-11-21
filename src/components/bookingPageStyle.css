@@ -9,7 +9,7 @@
   max-width: 320px;
   min-height: 100vh;
   padding: 20px;
-  background-color: #fff5f7;
+  background-color: #add6b4;
   display: flex;
   flex-direction: column;
 }
@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  border: 2px solid;
 }
 
 .hamburger-menu {
@@ -36,7 +37,7 @@
 .hamburger-menu span {
   width: 100%;
   height: 3px;
-  background-color: #ffb6c1;
+  background-color: #53709c;
   border-radius: 2px;
 }
 
@@ -54,7 +55,7 @@
 }
 
 .booking-title {
-  color: #e93d6f;
+  color: #33235e;
   font-size: 48px;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -153,7 +154,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #e93d6f;
+  background-color: #1ca344;
   border: none;
   color: white;
   font-size: 24px;
@@ -190,7 +191,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #e93d6f;
+  background-color: #1ca344;
   border: none;
   color: white;
   font-size: 24px;
@@ -204,14 +205,14 @@
 }
 
 .remove-person-btn:hover {
-  background-color: #c92a5a;
+  background-color: #587260;
 }
 
 .add-person-btn {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #e93d6f;
+  background-color: #1ca344;
   border: none;
   color: white;
   font-size: 28px;
@@ -231,7 +232,7 @@
 .strike-button {
   width: 100%;
   padding: 20px;
-  background-color: #e93d6f;
+  background-color: #1ca344;
   border: none;
   border-radius: 8px;
   color: white;
@@ -247,7 +248,7 @@
 }
 
 .strike-button:hover {
-  background-color: #c92a5a;
+  background-color: #1ca344;
 }
 
 .strike-button:active {
@@ -305,13 +306,4 @@
   color: #e93d6f;
 }
 
-/* Ta bort spinner från number inputs */
-/* input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-input[type="number"] {
-  -moz-appearance: textfield;
-} */
